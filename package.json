@@ -7,5 +7,13 @@
   },
   "author": "shc",
   "license": "ISC",
-  "description": ""
+  "description": "Free Code Camp Course - learnyounode",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShihHungChen/npm_learnyounode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShihHungChen/npm_learnyounode/issues"
+  },
+  "homepage": "https://github.com/ShihHungChen/npm_learnyounode#readme"
 }
