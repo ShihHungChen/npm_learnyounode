@@ -36,3 +36,21 @@ function logAnswer(){
 }
 logAnswer();
 */
+
+/***This is the lesson five***/
+/*
+var fs = require('fs');
+var dir = process.argv[2];
+var extension = process.argv[3];
+fs.readdir(dir, function listSpecifiedExtension(err, list){
+    if(err)
+        console.log(err);
+    
+    for(var i = 0; i < list.length; ++i){
+        var file_name = list[i].split('.');
+        if( file_name[1] === extension ){
+            console.log(list[i]);
+        }
+    }
+});
+*/
