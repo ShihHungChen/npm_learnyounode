@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/ShihHungChen/npm_learnyounode/issues"
   },
-  "homepage": "https://github.com/ShihHungChen/npm_learnyounode#readme"
+  "homepage": "https://github.com/ShihHungChen/npm_learnyounode#readme",
+  "dependencies": {}
 }

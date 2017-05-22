@@ -69,6 +69,7 @@ mymodule(process.argv[2], process.argv[3], function (err, list){
 */
 
 /***This is the lesson seven***/
+/*
 var http = require('http');
 var url = process.argv[2];
 
@@ -76,4 +77,19 @@ http.get(url, function(response){
    response.setEncoding('utf8');
    response.on('data', console.log);
    response.on('err',console.error)
+});
+*/
+
+/***This is the lesson eight***/
+var http = require('http');
+var bl = require('bl');
+var url = process.argv[2];
+http.get(url, function(response){
+   response.pipe(bl(function(err, data){
+       if(err){
+            return console.error("There was an error : ", err);
+       }
+       console.log(data.length);
+       console.log(data.toString());
+   })); 
 });
