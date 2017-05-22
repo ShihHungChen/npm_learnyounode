@@ -81,6 +81,7 @@ http.get(url, function(response){
 */
 
 /***This is the lesson eight***/
+/*
 var http = require('http');
 var bl = require('bl');
 var url = process.argv[2];
@@ -93,3 +94,83 @@ http.get(url, function(response){
        console.log(data.toString());
    })); 
 });
+*/
+
+/***This is lesson nine***/
+/*
+// my answer
+var http = require('http');
+var bl = require('bl');
+var container = [];
+var finished = 0;
+http.get(process.argv[2], function(response){
+    response.pipe(bl(function(err,data){
+        if(err){
+            console.error('There was an error: ', err);
+        }
+        container[0] = data.toString();
+        finished++;
+    }));
+})
+http.get(process.argv[3], function(response){
+    response.pipe(bl(function(err,data){
+        if(err){
+            console.error('There was an error: ', err);
+        }
+        container[1] = data.toString();
+        finished++;
+    }));
+})
+http.get(process.argv[4], function(response){
+    response.pipe(bl(function(err,data){
+        if(err){
+            console.error('There was an error: ', err);
+        }
+        container[2] = data.toString();
+        finished++;
+    }));
+})
+function wait(){
+    if(finished !== 3){
+        setTimeout(wait, 2000);
+    }
+    else{
+        for(var j = 0; j < 3; j++){
+            console.log(container[j]);
+        }
+    }
+}
+wait();
+//official solution
+    var http = require('http')
+    var bl = require('bl')
+    var results = []
+    var count = 0
+    
+    function printResults () {
+      for (var i = 0; i < 3; i++) {
+        console.log(results[i])
+      }
+    }
+    
+    function httpGet (index) {
+      http.get(process.argv[2 + index], function (response) {
+        response.pipe(bl(function (err, data) {
+          if (err) {
+            return console.error(err)
+          }
+    
+          results[index] = data.toString()
+          count++
+    
+          if (count === 3) {
+            printResults()
+          }
+        }))
+      })
+    }
+    
+    for (var i = 0; i < 3; i++) {
+      httpGet(i)
+    }
+*/
