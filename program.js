@@ -56,15 +56,13 @@ fs.readdir(dir, function listSpecifiedExtension(err, list){
 */
 
 /***This is lesson six***/
-/*
+
 var mymodule = require('./extractspecifiedfile.js');
-function printFiles(err, data){
+mymodule(process.argv[2], process.argv[3], function (err, list){
     if(err)
-        return console.error(err);
+        return console.error('There was an error: ',err);
     
-    for(var i = 0; i < data.length; ++i){
-        console.log(data[i]);
-    }
-};
-mymodule(process.argv[2], process.argv[3], printFiles);
-*/
+    list.forEach(function(file){
+       console.log(file);
+    });
+});
