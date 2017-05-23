@@ -160,9 +160,24 @@ for(var j = 0; j < 3; ++j){
 */
 
 /***This is the lesson ten***/
+/*
 var net = require('net');
 var strftime = require('strftime');
 var server = net.createServer(function(socket){
     socket.end(strftime('%F %H:%M\n', new Date()));
 });
 server.listen(process.argv[2]);
+*/
+
+/***This is the lesson eleven***/
+/*
+var http = require('http');
+var fs = require('fs');
+var server = http.createServer(function(req, res){
+    var src = fs.createReadStream(process.argv[3]);
+    src.pipe(res);
+});
+server.listen(process.argv[2]);
+*/
+
+/***This is the lesson twelve***/
