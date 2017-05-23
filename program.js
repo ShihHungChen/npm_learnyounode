@@ -97,50 +97,36 @@ http.get(url, function(response){
 */
 
 /***This is lesson nine***/
-/*
+
 // my answer
 var http = require('http');
 var bl = require('bl');
 var container = [];
 var finished = 0;
-http.get(process.argv[2], function(response){
-    response.pipe(bl(function(err,data){
-        if(err){
-            console.error('There was an error: ', err);
-        }
-        container[0] = data.toString();
-        finished++;
-    }));
-})
-http.get(process.argv[3], function(response){
-    response.pipe(bl(function(err,data){
-        if(err){
-            console.error('There was an error: ', err);
-        }
-        container[1] = data.toString();
-        finished++;
-    }));
-})
-http.get(process.argv[4], function(response){
-    response.pipe(bl(function(err,data){
-        if(err){
-            console.error('There was an error: ', err);
-        }
-        container[2] = data.toString();
-        finished++;
-    }));
-})
-function wait(){
-    if(finished !== 3){
-        setTimeout(wait, 2000);
-    }
-    else{
-        for(var j = 0; j < 3; j++){
-            console.log(container[j]);
-        }
-    }
+
+function getHttp(index){
+    http.get(process.argv[2+index], function(response){
+       response.pipe(bl(function(err, data){
+           if(err){
+               return console.error('There was an error: ',err);
+           }
+           container[index] = data.toString();
+           finished++;
+           
+           if(finished === 3){
+               for(var i = 0; i < container.length; ++i){
+                   console.log(container[i]);
+               }
+           }
+       }));
+    });
 }
-wait();
+
+for(var j = 0; j < 3; ++j){
+    getHttp(j);
+}
+
+/*
 //official solution
     var http = require('http')
     var bl = require('bl')
