@@ -97,7 +97,7 @@ http.get(url, function(response){
 */
 
 /***This is lesson nine***/
-
+/*
 // my answer
 var http = require('http');
 var bl = require('bl');
@@ -125,8 +125,6 @@ function getHttp(index){
 for(var j = 0; j < 3; ++j){
     getHttp(j);
 }
-
-/*
 //official solution
     var http = require('http')
     var bl = require('bl')
@@ -160,3 +158,11 @@ for(var j = 0; j < 3; ++j){
       httpGet(i)
     }
 */
+
+/***This is the lesson ten***/
+var net = require('net');
+var strftime = require('strftime');
+var server = net.createServer(function(socket){
+    socket.end(strftime('%F %H:%M\n', new Date()));
+});
+server.listen(process.argv[2]);
