@@ -181,6 +181,16 @@ server.listen(process.argv[2]);
 */
 
 /***This is the lesson twelve***/
+var http = require('http');
+var map = require('through2-map');
+var server = http.createServer(function(req,res){
+    req.pipe(map(function (chunk){
+        return chunk.toString().toUpperCase();
+    })).pipe(res);
+});
+server.listen(process.argv[2]);
+
+/***This is the lesson thirteen***/
 /*
 var http = require('http');
 var url = require('url');
