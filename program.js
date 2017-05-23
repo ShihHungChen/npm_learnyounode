@@ -181,3 +181,31 @@ server.listen(process.argv[2]);
 */
 
 /***This is the lesson twelve***/
+/*
+var http = require('http');
+var url = require('url');
+
+function getISOtime(time){
+    var ISOtime = new Date(time);
+    return {'hour' : ISOtime.getHours(), 'minute' : ISOtime.getMinutes(), 'second' : ISOtime.getSeconds()}
+}
+
+function getUNIXtime(time){
+    var UNIXtime = new Date(time);
+    return {'unixtime' : UNIXtime.getTime()}
+}
+
+var server = http.createServer(function(req, res){
+    url = url.parse(req.url, true);
+    var query_time = new Date(url.query.iso);
+    if( url.pathname.search('/api/unixtime') !== -1 ){
+        res.writeHeader(200, {'Content-Type' : 'application/json'});
+        res.end(JSON.stringify(getUNIXtime(query_time)));
+    }
+    else if(url.pathname.search('/api/parsetime') !== -1){
+        res.writeHead(200, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify(getISOtime(query_time)));
+    }
+});
+server.listen(process.argv[2]);
+*/
